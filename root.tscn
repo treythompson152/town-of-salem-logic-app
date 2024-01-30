@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=3 uid="uid://2tnvst4t34gn"]
+
+[ext_resource type="Script" path="res://TitleScreen.gd" id="1_mp04i"]
+[ext_resource type="Script" path="res://Setup.gd" id="2_ycwe8"]
+
+[sub_resource type="GDScript" id="GDScript_4mbc0"]
+script/source = "extends Control
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_start_pressed():
+	$Start.hide()
+"
+
+[node name="Root" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = SubResource("GDScript_4mbc0")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 126.0
+offset_right = 159.0
+offset_bottom = 191.0
+scale = Vector2(3, 3)
+text = "Mafia Night App"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_mp04i")
+
+[node name="Start" type="Button" parent="Title"]
+layout_mode = 0
+offset_left = 43.3333
+offset_top = 82.6667
+offset_right = 116.333
+offset_bottom = 114.667
+text = "Start"
+icon_alignment = 1
+
+[node name="Setup" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_ycwe8")
+
+[node name="NumPlayersInput" type="LineEdit" parent="Setup"]
+layout_mode = 0
+offset_right = 67.0625
+offset_bottom = 31.0
+
+[node name="PlayersNameInput" type="LineEdit" parent="Setup"]
+layout_mode = 0
+offset_right = 67.0625
+offset_bottom = 31.0
+
+[connection signal="pressed" from="Title/Start" to="Title" method="_on_start_pressed"]
