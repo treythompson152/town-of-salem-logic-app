@@ -1,66 +1,150 @@
-[gd_scene load_steps=4 format=3 uid="uid://2tnvst4t34gn"]
+[gd_scene load_steps=2 format=3 uid="uid://curh80f2nt6u5"]
 
-[ext_resource type="Script" path="res://TitleScreen.gd" id="1_mp04i"]
-[ext_resource type="Script" path="res://Setup.gd" id="2_ycwe8"]
-
-[sub_resource type="GDScript" id="GDScript_4mbc0"]
-script/source = "extends Control
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
-func _on_start_pressed():
-	$Start.hide()
-"
+[ext_resource type="Script" path="res://root.gd" id="1_5c5an"]
 
 [node name="Root" type="Control"]
 layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5c5an")
+metadata/_edit_horizontal_guides_ = []
+metadata/_edit_vertical_guides_ = [240.0]
+
+[node name="TitleScreen" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = SubResource("GDScript_4mbc0")
 
-[node name="Title" type="Label" parent="."]
-layout_mode = 0
-offset_left = -2.0
-offset_top = 126.0
-offset_right = 159.0
-offset_bottom = 191.0
-scale = Vector2(3, 3)
-text = "Mafia Night App"
+[node name="Button" type="Button" parent="TitleScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.39375
+anchor_top = 0.573611
+anchor_right = 0.603812
+anchor_bottom = 0.667987
+offset_left = 173.25
+offset_top = 390.056
+offset_right = 210.848
+offset_bottom = 417.281
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.19195, 2.19195)
+text = "Start"
+
+[node name="Title" type="Label" parent="TitleScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 95.0
+offset_top = 261.0
+offset_right = 174.0
+offset_bottom = 287.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.16, 3.16)
+text = "Mafia App"
+
+[node name="GameSetup" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NameAssigner" type="Control" parent="GameSetup"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NameInput" type="LineEdit" parent="GameSetup/NameAssigner"]
+offset_left = 101.0
+offset_top = 363.0
+offset_right = 232.0
+offset_bottom = 402.0
+
+[node name="AskName" type="Label" parent="GameSetup/NameAssigner"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = 252.0
+offset_right = 170.0
+offset_bottom = 278.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.68, 2.68)
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("1_mp04i")
 
-[node name="Start" type="Button" parent="Title"]
-layout_mode = 0
-offset_left = 43.3333
-offset_top = 82.6667
-offset_right = 116.333
-offset_bottom = 114.667
-text = "Start"
-icon_alignment = 1
+[node name="SubmitName" type="Button" parent="GameSetup/NameAssigner"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.39375
+anchor_top = 0.573611
+anchor_right = 0.603812
+anchor_bottom = 0.667987
+offset_left = 242.25
+offset_top = 340.056
+offset_right = 296.848
+offset_bottom = 367.281
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.68064, 1.55907)
+text = "Submit"
 
-[node name="Setup" type="Control" parent="."]
+[node name="NumberOfPlayers" type="Control" parent="GameSetup"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("2_ycwe8")
 
-[node name="NumPlayersInput" type="LineEdit" parent="Setup"]
+[node name="NumPlayerInput" type="LineEdit" parent="GameSetup/NumberOfPlayers"]
 layout_mode = 0
-offset_right = 67.0625
-offset_bottom = 31.0
+offset_left = 101.0
+offset_top = 363.0
+offset_right = 232.0
+offset_bottom = 402.0
 
-[node name="PlayersNameInput" type="LineEdit" parent="Setup"]
-layout_mode = 0
-offset_right = 67.0625
-offset_bottom = 31.0
+[node name="Question" type="Label" parent="GameSetup/NumberOfPlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = 252.0
+offset_right = 170.0
+offset_bottom = 278.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.68, 2.68)
+text = "How Many Players?"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[connection signal="pressed" from="Title/Start" to="Title" method="_on_start_pressed"]
+[node name="SubmitNumber" type="Button" parent="GameSetup/NumberOfPlayers"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.39375
+anchor_top = 0.573611
+anchor_right = 0.603812
+anchor_bottom = 0.667987
+offset_left = 242.25
+offset_top = 340.056
+offset_right = 296.848
+offset_bottom = 367.281
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.68064, 1.55907)
+text = "Submit"
+
+[connection signal="pressed" from="TitleScreen/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="GameSetup/NameAssigner/SubmitName" to="." method="_on_submit_name_pressed"]
+[connection signal="pressed" from="GameSetup/NumberOfPlayers/SubmitNumber" to="." method="_on_submit_number_pressed"]
